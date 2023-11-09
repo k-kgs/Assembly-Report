@@ -15,10 +15,10 @@ assembly_router = APIRouter(
 )
 
 
-@assembly_router.get("/report")
+@assembly_router.get("/get_report")
 async def get_report(report_id:str, is_allowed = Depends(auth_handler.basic_auth_access_wrapper)):
    return await get_report_in_csv(is_allowed)
 
-@assembly_router.post("/trigger")
+@assembly_router.post("/trigger_report")
 async def trigger(is_allowed = Depends(auth_handler.basic_auth_access_wrapper)):
    return await trigger_report(is_allowed)
